@@ -12,7 +12,30 @@
     tools:context="edu.udemy.android.guess.MainActivity">
 
     <TextView
+        android:text="@string/txv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txv_description"
+        android:textSize="@dimen/txv_description"/>
+
+    <Button
+        android:text="@string/btn_play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txv_description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:id="@+id/btn_play"/>
+
+    <TextView
+        android:text="@string/txv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_play"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:id="@+id/txv_result"
+        android:textSize="@dimen/txv_description"/>
 </RelativeLayout>
