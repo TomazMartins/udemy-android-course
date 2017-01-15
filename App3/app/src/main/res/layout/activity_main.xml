@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.udemy.android.dogage.MainActivity"
+    android:background="@android:color/holo_blue_light">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/img_dog"
+        android:background="@drawable/dog"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="22dp"
+        android:id="@+id/txf_dog_age"
+        android:layout_below="@+id/txv_description"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/background_light"/>
+
+    <TextView
+        android:text="@string/txv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:id="@+id/txv_description"
+        android:textSize="@dimen/txv_description"
+        android:layout_below="@+id/img_dog"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/background_light"
+        android:padding="10dp"/>
+
+    <Button
+        android:text="@string/btn_calculate"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txf_dog_age"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp"
+        android:id="@+id/btn_calculate"
+        android:layout_width="150dp"/>
+
+    <TextView
+        android:text="@string/txv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_calculate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:id="@+id/txv_result"
+        android:textSize="@dimen/txv_description"
+        android:textColor="@android:color/background_light"/>
+</RelativeLayout>
