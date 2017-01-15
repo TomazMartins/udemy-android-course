@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Phrase For Day</string>
+    <string name="txv_new_phrase">New Phrase</string>
 </resources>

@@ -9,10 +9,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.udemy.android.phraseforday.MainActivity">
+    tools:context="edu.udemy.android.phraseforday.MainActivity"
+    android:background="@android:color/holo_green_light">
+
+    <Button
+        android:text="@string/txv_new_phrase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_new_phrase"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_below="@+id/btn_new_phrase"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/txv_phrase"
+        android:textColor="@android:color/background_light"
+        android:textSize="@dimen/txv_phrase"/>
 </RelativeLayout>
