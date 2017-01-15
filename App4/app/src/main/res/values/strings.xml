@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Gas or Ethanol</string>
+    <string name="txv_ethanol">Ethanol Prize</string>
+    <string name="txv_gas">Gas Prize</string>
+    <string name="btn_verify">Verify</string>
+</resources>
