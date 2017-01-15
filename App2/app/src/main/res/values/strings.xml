@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Phrase For Day</string>
     <string name="txv_new_phrase">New Phrase</string>
+    <string name="txv_phrase">Click on the button</string>
 </resources>

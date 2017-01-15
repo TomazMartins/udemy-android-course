@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:text="TextView"
+        android:text="@string/txv_phrase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_new_phrase"
