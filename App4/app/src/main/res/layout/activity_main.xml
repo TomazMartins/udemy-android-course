@@ -22,35 +22,6 @@
         android:id="@+id/img_car"/>
 
     <EditText
-        android:layout_width="@dimen/edt_field"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_marginTop="85dp"
-        android:id="@+id/edt_ethanol"
-        android:background="@android:color/background_light"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_below="@+id/img_car"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <EditText
-        android:layout_width="@dimen/edt_field"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_marginTop="85dp"
-        android:id="@+id/editText3"
-        android:background="@android:color/background_light"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_below="@+id/img_car"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
-
-    <EditText
-        android:layout_width="@dimen/edt_field"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
@@ -61,36 +32,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"/>
-
-    <TextView
-        android:text="@string/txv_ethanol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txv_ethanol"
-        android:textColor="@android:color/background_light"
-        android:textStyle="normal|bold"
-        android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/edt_ethanol"
-        android:layout_alignEnd="@+id/edt_ethanol"
-        android:layout_marginRight="13dp"
-        android:layout_marginEnd="13dp"/>
-
-    <TextView
-        android:text="@string/txv_gas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txv_gas"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/background_light"
-        android:layout_alignBaseline="@+id/txv_ethanol"
-        android:layout_alignBottom="@+id/txv_ethanol"
-        android:layout_alignLeft="@+id/edt_gas"
-        android:layout_alignStart="@+id/edt_gas"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"/>
+        android:layout_marginEnd="16dp"
+        android:layout_width="100dp"/>
 
     <Button
         android:text="@string/btn_verify"
@@ -109,9 +52,48 @@
         android:layout_below="@+id/btn_verify"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
-        android:id="@+id/textView3"
+        android:id="@+id/txv_result"
         android:textStyle="normal|bold"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"/>
+
+    <TextView
+        android:text="@string/txv_gas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txv_gas"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/background_light"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/edt_gas"
+        android:layout_alignEnd="@+id/edt_gas"/>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/edt_ethanol"
+        android:background="@android:color/background_light"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
+        android:layout_width="100dp"
+        android:layout_above="@+id/txv_ethanol"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:text="@string/txv_ethanol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txv_ethanol"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/txv_gas"
+        android:layout_alignBottom="@+id/txv_gas"
+        android:layout_alignRight="@+id/edt_ethanol"
+        android:layout_alignEnd="@+id/edt_ethanol"/>
 
 </RelativeLayout>
