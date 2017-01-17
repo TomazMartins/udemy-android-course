@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ATM Company</string>
+    <string name="txv_about">About</string>
+    <string name="txv_services">Services</string>
+    <string name="txv_clients">Clients</string>
+    <string name="txv_contact">Contact</string>
+</resources>
