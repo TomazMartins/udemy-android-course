@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.udemy.android.atmcompany.AboutActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/btn_about"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/img_title about"/>
+
+    <TextView
+        android:text="@string/txv_about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_title about"
+        android:layout_toRightOf="@+id/img_title about"
+        android:layout_toEndOf="@+id/img_title about"
+        android:layout_marginLeft="76dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="33dp"
+        android:id="@+id/txv_title_about"
+        android:textSize="20sp"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="normal|bold"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/img_title about"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"
+        android:id="@+id/scv_about">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar massa urna, et fermentum dui luctus dapibus. Proin et lacinia sapien. Etiam aliquet volutpat fringilla. Ut euismod, tortor sit amet consequat laoreet, odio orci lobortis mi, eget elementum turpis justo in nibh. Maecenas ultricies elit orci, quis tincidunt velit congue at. Praesent quis massa in felis tristique finibus et a felis. Integer pellentesque ipsum sit amet viverra congue. Aliquam ac eros quis velit commodo vehicula. Aenean porta in purus in hendrerit.  Curabitur eu ligula quis quam consequat lobortis. Aenean non lacus eget eros finibus hendrerit non sed lectus. Aenean vestibulum auctor eros nec varius. Maecenas egestas risus in lacus aliquam vehicula. Praesent blandit congue mauris, vitae lobortis augue tempor at. In nec arcu urna. Nunc ac tincidunt quam. Sed gravida bibendum quam, et semper ligula pellentesque vitae. Donec sit amet justo aliquet, sodales turpis at, ultrices erat. Vivamus sagittis sapien et nibh volutpat consectetur. Nam tortor quam, euismod at risus ornare, egestas mollis metus. Suspendisse laoreet luctus porttitor. Quisque tincidunt sem blandit arcu scelerisque, in sollicitudin arcu dignissim. Fusce non mollis tellus. Curabitur nunc turpis, mollis pellentesque dolor quis, pharetra sodales nulla. Ut mattis finibus aliquet. Etiam eget leo facilisis, dignissim mauris vel, lacinia dui. Donec sollicitudin ipsum a congue pulvinar. Duis leo quam, fermentum nec sodales bibendum, rutrum a elit. Pellentesque felis nibh, lobortis vitae diam vitae, fermentum facilisis nibh. Praesent ut orci eget urna tempor viverra at sed nisi. Morbi diam quam, tristique ultricies lacus nec, mollis dictum ex. Aliquam aliquam augue eu dapibus feugiat. Curabitur justo magna, consequat non ante quis, semper elementum mauris. Donec ut tincidunt ex, nec sollicitudin nunc. Nunc cursus nunc dignissim sodales iaculis."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txv_content_about"/>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
