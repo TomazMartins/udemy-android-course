@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_client"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.udemy.android.atmcompany.ClientActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/btn_clients"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/img_title_clients"/>
+
+    <TextView
+        android:text="@string/txv_clients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_title_clients"
+        android:layout_toRightOf="@+id/img_title_clients"
+        android:layout_toEndOf="@+id/img_title_clients"
+        android:layout_marginLeft="78dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginBottom="36dp"
+        android:id="@+id/txv_title_clients"
+        android:textSize="20sp"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="normal|bold"/>
+
+    <TextView
+        android:text="Google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_title_clients"
+        android:layout_alignRight="@+id/img_title_clients"
+        android:layout_alignEnd="@+id/img_title_clients"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginTop="80dp"
+        android:id="@+id/txv_client_2"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"/>
+
+    <TextView
+        android:text="Microsoft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txv_client_3"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/txv_client_2"
+        android:layout_alignStart="@+id/txv_client_2"/>
+
+    <TextView
+        android:text="Apple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txv_client_1"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/txv_client_3"
+        android:layout_alignLeft="@+id/txv_client_3"
+        android:layout_alignStart="@+id/txv_client_3"
+        android:layout_marginTop="46dp"/>
+</RelativeLayout>
