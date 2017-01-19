@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".ClientActivity">
         </activity>
+        <activity android:name=".ContactActivity">
+        </activity>
     </application>
 
 </manifest>
