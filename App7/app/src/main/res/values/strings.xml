@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Heads or Tails</string>
+    <string name="btn_play">Play!</string>
+    <string name="btn_back">Back</string>
 </resources>
