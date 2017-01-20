@@ -19,15 +19,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/img_title about"/>
+        android:id="@+id/img_title_about"/>
 
     <TextView
         android:text="@string/txv_about"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/img_title about"
-        android:layout_toRightOf="@+id/img_title about"
-        android:layout_toEndOf="@+id/img_title about"
+        android:layout_alignBottom="@+id/img_title_about"
+        android:layout_toRightOf="@+id/img_title_about"
+        android:layout_toEndOf="@+id/img_title_about"
         android:layout_marginLeft="76dp"
         android:layout_marginStart="76dp"
         android:layout_marginBottom="33dp"
@@ -39,11 +39,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/img_title about"
+        android:layout_below="@+id/img_title_about"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="35dp"
-        android:id="@+id/scv_about">
+        android:id="@+id/scv_about"
+        android:background="?attr/colorButtonNormal"
+        android:padding="@dimen/normal_padding">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -38,38 +38,37 @@
 
     <TextView
         android:text="Google"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_title_clients"
-        android:layout_alignRight="@+id/img_title_clients"
-        android:layout_alignEnd="@+id/img_title_clients"
-        android:layout_marginRight="19dp"
-        android:layout_marginEnd="19dp"
         android:layout_marginTop="80dp"
+        android:id="@+id/txv_client_1"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:text="Microsoft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txv_client_1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp"
         android:id="@+id/txv_client_2"
         android:textSize="20sp"
         android:textStyle="normal|bold"/>
 
     <TextView
-        android:text="Microsoft"
-        android:layout_width="wrap_content"
+        android:text="Apple"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txv_client_2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="70dp"
         android:id="@+id/txv_client_3"
         android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/txv_client_2"
-        android:layout_alignStart="@+id/txv_client_2"/>
-
-    <TextView
-        android:text="Apple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txv_client_1"
-        android:textSize="20sp"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/txv_client_3"
-        android:layout_alignLeft="@+id/txv_client_3"
-        android:layout_alignStart="@+id/txv_client_3"
-        android:layout_marginTop="46dp"/>
+        android:textStyle="normal|bold"/>
 </RelativeLayout>

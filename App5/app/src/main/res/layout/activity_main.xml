@@ -15,19 +15,19 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/img_logo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/imageView"/>
+        android:id="@+id/imageView"
+        android:background="@drawable/img_logo"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/btn_services"
         android:id="@+id/btn_services"
         android:layout_alignTop="@+id/btn_about"
         android:layout_toRightOf="@+id/imageView"
-        android:layout_toEndOf="@+id/imageView"/>
+        android:layout_toEndOf="@+id/imageView"
+        android:background="@drawable/btn_services"/>
 
     <ImageView
         android:layout_width="100dp"
@@ -36,29 +36,30 @@
         android:id="@+id/btn_contact"
         android:layout_alignTop="@+id/btn_clients"
         android:layout_alignLeft="@+id/btn_services"
-        android:layout_alignStart="@+id/btn_services"/>
+        android:layout_alignStart="@+id/btn_services"
+        android:background="@drawable/btn_contacts"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/btn_about"
         android:layout_marginTop="57dp"
         android:id="@+id/btn_about"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="@drawable/btn_about"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/btn_clients"
         android:id="@+id/btn_clients"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/btn_about"
         android:layout_alignStart="@+id/btn_about"
-        android:layout_marginBottom="47dp"/>
+        android:layout_marginBottom="47dp"
+        android:background="@drawable/btn_clients"/>
 
     <TextView
         android:text="@string/txv_about"
