@@ -14,11 +14,11 @@
 
     <ImageView
         android:layout_width="match_parent"
-        app:srcCompat="@drawable/coin_title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/imageView"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:background="@drawable/coin_title"/>
 
     <Button
         android:text="@string/btn_play"

@@ -13,12 +13,11 @@
     tools:context="edu.udemy.android.headsortails.CoinActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/coin_face"
-        android:id="@+id/imageView2"
+        android:id="@+id/img_coin"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
 
     <Button
         android:text="@string/btn_back"
