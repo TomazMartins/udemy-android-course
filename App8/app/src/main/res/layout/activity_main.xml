@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -11,8 +12,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.udemy.android.zodiac.MainActivity">
 
+    <ImageView
+        android:id="@+id/img_zodiac"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/zodiac_wheel_1"/>
+
     <TextView
+        android:text="@string/txv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/txv_title"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/img_zodiac"
+        android:layout_toEndOf="@+id/img_zodiac"
+        android:layout_marginTop="62dp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/background_dark"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/img_zodiac"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="@dimen/normal_padding"
+        android:id="@+id/lsv_zodiac"
+        android:background="#c5e9f7"/>
 </RelativeLayout>
