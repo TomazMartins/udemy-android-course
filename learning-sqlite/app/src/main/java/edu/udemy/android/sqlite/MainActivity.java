@@ -74,4 +74,31 @@ public class MainActivity extends AppCompatActivity {
 
         txv_show.setText( result );
     }
+
+//    // Another form to travel over Database
+//    //
+//    private void travelDatabase( SQLiteDatabase database ) {
+//        cursor = database.rawQuery( "SELECT name, age FROM people", null );
+//
+//        int indexColumnName = cursor.getColumnIndex( "name" );
+//        int indexColumnAge = cursor.getColumnIndex( "age" );
+//
+//        cursor.moveToFirst();
+//
+//        String name;
+//        String age;
+//        String result = "";
+//
+//        while( cursor.moveToNext() ) {
+//            name = cursor.getString( indexColumnName );
+//            age = cursor.getString( indexColumnAge );
+//
+//            result += name;
+//            result += " ";
+//            result += age;
+//            result += "\n";
+//        }
+//
+//        txv_show.setText( result );
+//    }
 }
