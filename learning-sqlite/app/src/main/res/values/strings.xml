@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SQLite</string>
+    <string name="db_not_opened">Database is not opened</string>
+    <string name="db_empty">Database is empty</string>
 </resources>
