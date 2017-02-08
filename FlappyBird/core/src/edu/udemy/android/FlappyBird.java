@@ -17,14 +17,10 @@ public class FlappyBird extends ApplicationAdapter {
 
     private double variation = 0;
     private float fallSpeed = 0;
-    private float positionY = 0;
-    private float positionX = 0;
+    private float positionY;
 
     @Override
     public void create() {
-        maxWidth = Gdx.graphics.getWidth();
-        maxHeight = Gdx.graphics.getHeight();
-
         batch = new SpriteBatch();
 
         birds = new Texture[ 3 ];
@@ -34,7 +30,11 @@ public class FlappyBird extends ApplicationAdapter {
 
         background = new Texture( "background.png" );
 
+        maxWidth = Gdx.graphics.getWidth();
+        maxHeight = Gdx.graphics.getHeight();
+
         positionY = maxHeight/2;
+
     }
 
     @Override
@@ -46,14 +46,18 @@ public class FlappyBird extends ApplicationAdapter {
             variation = 0;
         }
 
-        if( positionY > 0 ) {
+        if( Gdx.input.justTouched() ) {
+            fallSpeed = -10;
+        }
+
+        if( positionY > 0  || fallSpeed < 0 ) {
             positionY -= fallSpeed;
         }
 
         batch.begin();
 
         batch.draw( background, 0, 0, maxWidth, maxHeight );
-        batch.draw( birds[ (int) variation ], positionX, positionY );
+        batch.draw( birds[ (int) variation ], 30, positionY );
 
         batch.end();
     }
