@@ -5,8 +5,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.Random;
+
 public class FlappyBird extends ApplicationAdapter {
-    final static private float SPACE_BETWEEN_PIPES = 200; // In Pixels
+    final static private float SPACE_BETWEEN_PIPES = 300; // In Pixels
 
     private SpriteBatch batch;
 
@@ -17,20 +19,23 @@ public class FlappyBird extends ApplicationAdapter {
     private Texture pipeTop;
     private Texture pipeBottom;
 
-    private int movement = 0;
+    private Random random;
+    private float heightRandom;
 
     private double variation = 0;
     private float fallSpeed = 0;
+    private float deltaTime;
 
     // This measures are in Pixels
     private int maxWidth = 0;
     private int maxHeight = 0;
     private float positionY;
-    private float positionPipeX = 0;
+    private float positionPipeX;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
+        random = new Random();
 
         birds = new Texture[ 3 ];
         birds[ 0 ] = new Texture( "bird_1.png" );
@@ -53,7 +58,10 @@ public class FlappyBird extends ApplicationAdapter {
 
     @Override
     public void render() {
-        variation += Gdx.graphics.getDeltaTime() * 10;
+        deltaTime = Gdx.graphics.getDeltaTime();
+
+        variation += deltaTime * 10;
+        positionPipeX -= deltaTime * 200;
         fallSpeed++;
 
         if( variation > 2 ) {
@@ -61,23 +69,32 @@ public class FlappyBird extends ApplicationAdapter {
         }
 
         if( Gdx.input.justTouched() ) {
-            fallSpeed = -10;
+            fallSpeed = -15;
         }
 
         if( positionY > 0 || fallSpeed < 0 ) {
             positionY -= fallSpeed;
         }
 
+        if( positionPipeX < -(pipeTop.getWidth()) ) {
+            positionPipeX = maxWidth;
+
+            heightRandom = random.nextInt( 400 ) - 200;
+        }
+
         batch.begin();
 
         batch.draw( background, 0, 0, maxWidth, maxHeight );
-        batch.draw( pipeTop, positionPipeX, (maxHeight / 2 + SPACE_BETWEEN_PIPES / 2) );
+
+        batch.draw( pipeTop, positionPipeX,
+                    (maxHeight / 2 + SPACE_BETWEEN_PIPES / 2 + heightRandom)
+        );
 
         batch.draw( pipeBottom, positionPipeX,
-                    (maxHeight / 2 - pipeBottom.getHeight() - SPACE_BETWEEN_PIPES / 2)
-                  );
+                    (maxHeight / 2 - pipeBottom.getHeight() - SPACE_BETWEEN_PIPES / 2 + heightRandom)
+        );
 
-        batch.draw( birds[ (int) variation ], 30, positionY );
+        batch.draw( birds[ (int) variation ], 120, positionY );
 
         batch.end();
     }
