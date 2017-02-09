@@ -2,13 +2,21 @@ package edu.udemy.android;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.Random;
 
 public class FlappyBird extends ApplicationAdapter {
+    final static private int NO_STARTED = 0;
+    final static private int STARTED = 1;
+    final static private int END = 2;
+
     final static private float SPACE_BETWEEN_PIPES = 300; // In Pixels
+    final static private float POSITION_BIRD_X = 120;
+
 
     private SpriteBatch batch;
 
@@ -20,6 +28,12 @@ public class FlappyBird extends ApplicationAdapter {
     private Texture pipeBottom;
 
     private Random random;
+    private int gameState = NO_STARTED;
+    private int score = 0 ;
+
+    private boolean is_scored = false;
+
+    private BitmapFont font;
 
     private double variation = 0;
     private float fallSpeed = 0;
@@ -36,6 +50,10 @@ public class FlappyBird extends ApplicationAdapter {
         batch = new SpriteBatch();
         random = new Random();
 
+        font = new BitmapFont();
+        font.setColor( Color.WHITE );
+        font.getData().setScale( 4 );
+
         createTextures();
 
         maxWidth = Gdx.graphics.getWidth();
@@ -50,18 +68,41 @@ public class FlappyBird extends ApplicationAdapter {
     @Override
     public void render() {
         deltaTime = Gdx.graphics.getDeltaTime();
-        fallSpeed++;
 
         flapWings();
-        getPositionPipe();
 
-        flyBird();
-
-        fallBird();
-
-        movePipes();
+        verifyGameState();
 
         drawObjects();
+    }
+
+    private void verifyGameState() {
+        if( gameState == NO_STARTED ) {
+            if( Gdx.input.justTouched() ) {
+                gameState = STARTED;
+            }
+        } else {
+            fallSpeed++;
+
+            getPositionPipe();
+
+            flyBird();
+
+            fallBird();
+
+            movePipes();
+
+            incrementScore();
+        }
+    }
+
+    private void incrementScore() {
+        if( positionPipeX < POSITION_BIRD_X ) {
+            if( !is_scored ) {
+                score++;
+                is_scored = true;
+            }
+        }
     }
 
     private void drawObjects() {
@@ -77,7 +118,9 @@ public class FlappyBird extends ApplicationAdapter {
                 (maxHeight / 2 - pipeBottom.getHeight() - SPACE_BETWEEN_PIPES / 2 + heightRandom)
         );
 
-        batch.draw( birds[ (int) variation ], 120, positionBirdY );
+        batch.draw( birds[ (int) variation ], POSITION_BIRD_X, positionBirdY );
+
+        font.draw( batch, String.valueOf( score ), (maxWidth/2), (maxHeight-50) );
 
         batch.end();
     }
@@ -93,6 +136,8 @@ public class FlappyBird extends ApplicationAdapter {
             positionPipeX = maxWidth;
 
             heightRandom = random.nextInt( 400 ) - 200;
+
+            is_scored = false;
         }
     }
 
