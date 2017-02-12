@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -16,7 +15,7 @@ import java.util.Random;
 public class FlappyBird extends ApplicationAdapter {
     final static private int NO_STARTED = 0;
     final static private int STARTED = 1;
-    final static private int END = 2;
+    final static private int GAME_OVER = 2;
 
     final static private float SPACE_BETWEEN_PIPES = 300; // In Pixels
     final static private float POSITION_BIRD_X = 120;
@@ -28,12 +27,14 @@ public class FlappyBird extends ApplicationAdapter {
     private Texture background;
     private Texture pipeTop;
     private Texture pipeBottom;
+    private Texture gameOver;
 
     private Circle formBird;
     private Rectangle formPipeTop;
     private Rectangle formPipeBottom;
 
     private BitmapFont font;
+    private BitmapFont message;
     private Random random;
 
     private int gameState = NO_STARTED;
@@ -60,6 +61,10 @@ public class FlappyBird extends ApplicationAdapter {
         font.setColor( Color.WHITE );
         font.getData().setScale( 4 );
 
+        message = new BitmapFont();
+        message.setColor( Color.WHITE );
+        message.getData().setScale( 2 );
+
         formBird = new Circle();
         formPipeTop = new Rectangle();
         formPipeBottom = new Rectangle();
@@ -71,7 +76,7 @@ public class FlappyBird extends ApplicationAdapter {
 
         positionBirdY = maxHeight / 2;
 
-        positionPipeX = maxWidth - 100;
+        positionPipeX = maxWidth;
 
     }
 
@@ -102,7 +107,7 @@ public class FlappyBird extends ApplicationAdapter {
         if( Intersector.overlaps( formBird, formPipeBottom ) ||
                 Intersector.overlaps( formBird, formPipeTop )
         ) {
-
+            gameState = GAME_OVER;
         }
     }
 
@@ -114,15 +119,26 @@ public class FlappyBird extends ApplicationAdapter {
         } else {
             fallSpeed++;
 
-            getPositionPipe();
-
-            flyBird();
-
             fallBird();
 
-            movePipes();
+            if( gameState == STARTED ) {
+                getPositionPipe();
 
-            incrementScore();
+                flyBird();
+
+                movePipes();
+
+                incrementScore();
+            } else {
+                if( Gdx.input.justTouched() ) {
+                    gameState = NO_STARTED;
+                    score = 0;
+
+                    fallSpeed = 0;
+                    positionBirdY = maxHeight/2;
+                    positionPipeX = maxWidth;
+                }
+            }
         }
     }
 
@@ -151,6 +167,13 @@ public class FlappyBird extends ApplicationAdapter {
         batch.draw( birds[ (int) variation ], POSITION_BIRD_X, positionBirdY );
 
         font.draw( batch, String.valueOf( score ), (maxWidth/2), (maxHeight-50) );
+
+        if( gameState == GAME_OVER ) {
+            batch.draw( gameOver, maxWidth/2 - gameOver.getWidth()/2, maxHeight/2 );
+            message.draw( batch, "Touch to Restart", maxWidth/2 - 100,
+                    maxHeight/2 - gameOver.getHeight()/2
+                );
+        }
 
         batch.end();
     }
@@ -186,6 +209,7 @@ public class FlappyBird extends ApplicationAdapter {
     }
 
     private void getPositionPipe() {
+
         positionPipeX -= deltaTime * 200;
     }
 
@@ -199,5 +223,7 @@ public class FlappyBird extends ApplicationAdapter {
 
         pipeBottom = new Texture( "pipe_bottom_up.png" );
         pipeTop = new Texture( "pipe_top_down.png" );
+
+        gameOver = new Texture( "game_over.png" );
     }
 }
