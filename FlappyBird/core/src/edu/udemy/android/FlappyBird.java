@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
@@ -31,7 +32,6 @@ public class FlappyBird extends ApplicationAdapter {
     private Circle formBird;
     private Rectangle formPipeTop;
     private Rectangle formPipeBottom;
-    private ShapeRenderer shape;
 
     private BitmapFont font;
     private Random random;
@@ -63,8 +63,6 @@ public class FlappyBird extends ApplicationAdapter {
         formBird = new Circle();
         formPipeTop = new Rectangle();
         formPipeBottom = new Rectangle();
-
-        shape = new ShapeRenderer();
 
         createTextures();
 
@@ -101,11 +99,11 @@ public class FlappyBird extends ApplicationAdapter {
                 pipeTop.getWidth(), pipeTop.getHeight()
         );
 
-        shape.begin( ShapeRenderer.ShapeType.Filled );
-        shape.circle( formBird.x, formBird.y, formBird.radius );
-        shape.rect( formPipeBottom.x, formPipeBottom.y, formPipeBottom.width, formPipeBottom.height );
-        shape.rect( formPipeTop.x, formPipeTop.y, formPipeTop.width, formPipeTop.height );
-        shape.end();
+        if( Intersector.overlaps( formBird, formPipeBottom ) ||
+                Intersector.overlaps( formBird, formPipeTop )
+        ) {
+
+        }
     }
 
     private void verifyGameState() {
