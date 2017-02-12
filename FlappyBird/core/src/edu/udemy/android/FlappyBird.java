@@ -6,6 +6,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
@@ -22,18 +25,21 @@ public class FlappyBird extends ApplicationAdapter {
 
     private Texture[] birds;
     private Texture background;
-
-
     private Texture pipeTop;
     private Texture pipeBottom;
 
-    private Random random;
-    private int gameState = NO_STARTED;
-    private int score = 0 ;
-
-    private boolean is_scored = false;
+    private Circle formBird;
+    private Rectangle formPipeTop;
+    private Rectangle formPipeBottom;
+    private ShapeRenderer shape;
 
     private BitmapFont font;
+    private Random random;
+
+    private int gameState = NO_STARTED;
+    private boolean is_scored = false;
+
+    private int score = 0 ;
 
     private double variation = 0;
     private float fallSpeed = 0;
@@ -53,6 +59,12 @@ public class FlappyBird extends ApplicationAdapter {
         font = new BitmapFont();
         font.setColor( Color.WHITE );
         font.getData().setScale( 4 );
+
+        formBird = new Circle();
+        formPipeTop = new Rectangle();
+        formPipeBottom = new Rectangle();
+
+        shape = new ShapeRenderer();
 
         createTextures();
 
@@ -74,6 +86,26 @@ public class FlappyBird extends ApplicationAdapter {
         verifyGameState();
 
         drawObjects();
+
+        formBird.set( (120 + birds[ 0 ].getWidth()/2),
+                (positionBirdY + birds[ 0 ].getHeight()/2), (birds[ 0 ].getHeight()/2)
+        );
+
+        formPipeBottom.set( positionPipeX,
+                (maxHeight / 2 - pipeBottom.getHeight() - SPACE_BETWEEN_PIPES / 2 + heightRandom),
+                pipeBottom.getWidth(), pipeBottom.getHeight()
+        );
+
+        formPipeTop.set( positionPipeX,
+                (maxHeight / 2 + SPACE_BETWEEN_PIPES / 2 + heightRandom),
+                pipeTop.getWidth(), pipeTop.getHeight()
+        );
+
+        shape.begin( ShapeRenderer.ShapeType.Filled );
+        shape.circle( formBird.x, formBird.y, formBird.radius );
+        shape.rect( formPipeBottom.x, formPipeBottom.y, formPipeBottom.width, formPipeBottom.height );
+        shape.rect( formPipeTop.x, formPipeTop.y, formPipeTop.width, formPipeTop.height );
+        shape.end();
     }
 
     private void verifyGameState() {
