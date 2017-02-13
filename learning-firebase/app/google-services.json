@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "225082917298",
+    "firebase_url": "https://fir-app-dd0d2.firebaseio.com",
+    "project_id": "fir-app-dd0d2",
+    "storage_bucket": "fir-app-dd0d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225082917298:android:59f5135ec721569a",
+        "android_client_info": {
+          "package_name": "edu.udemy.android.firebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225082917298-bbcd25e44rt52u2i4gl1qd27gu1ql685.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.udemy.android.firebaseapp",
+            "certificate_hash": "19CCBFB2A9BA31ADA872AA9CB65ED9EF7461CE58"
+          }
+        },
+        {
+          "client_id": "225082917298-nae3aq4u219gl58vn1kued25gb4jgjdp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_rkk4SwFzvnXsgBnF_ak3CHovfHlUUvA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225082917298-nae3aq4u219gl58vn1kued25gb4jgjdp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
