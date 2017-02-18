@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FirebaseApp</string>
+    <string name="txv_title">Testing Firebase Database</string>
+    <string name="txv_firstName">First Name</string>
+    <string name="txv_lastName">Last Name</string>
+    <string name="txv_sex">Sex</string>
+    <string name="txv_age">Age</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_show">Show</string>
 </resources>
