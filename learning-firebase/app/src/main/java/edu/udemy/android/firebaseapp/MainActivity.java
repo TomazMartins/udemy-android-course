@@ -19,6 +19,17 @@ public class MainActivity extends AppCompatActivity {
     * */
     private DatabaseReference firebaseReference = FirebaseDatabase.getInstance().getReference();
 
+    /*
+    * In here, we create, as from the root, another node
+    *   with method 'child()'.
+    *
+    *   This node calls 'points', and your value is '100'.
+    *
+    *   When the app is executed, the database in the Firebase
+    *   will be updated with this data.
+    * */
+    private DatabaseReference usersReference = firebaseReference.child( "users" );
+
 
 
     @Override
@@ -26,15 +37,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        /*
-        * In here, we create, as from the root, another node
-        *   with method 'child()'.
-        *
-        *   This node calls 'points', and your value is '100'.
-        *
-        *   When the app is executed, the database in the Firebase
-        *   will be updated with this data.
-        * */
-        firebaseReference.child( "points" ).setValue( "100" );
+        User user = new User();
+        user.setFirstName( "Ana Helena" );
+        user.setLastName( "Araújo" );
+        user.setSex( "Female" );
+        user.setAge( 18 );
+
+        usersReference.child( "001" ).setValue( user );
     }
 }
