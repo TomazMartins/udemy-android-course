@@ -8,8 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +71,23 @@ public class MainActivity extends AppCompatActivity {
                 currentUser = createUser();
 
                 usersReference.child( String.valueOf( counterOfUsers ) ).setValue( currentUser );
+            }
+        } );
+
+        btn_show.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                usersReference.addListenerForSingleValueEvent( new ValueEventListener() {
+                    @Override
+                    public void onDataChange( DataSnapshot dataSnapshot ) {
+                        txv_show.setText( dataSnapshot.getValue().toString() );
+                    }
+
+                    @Override
+                    public void onCancelled( DatabaseError databaseError ) {
+                        txv_show.setText( "There are nothing in database..." );
+                    }
+                } );
             }
         } );
     }
