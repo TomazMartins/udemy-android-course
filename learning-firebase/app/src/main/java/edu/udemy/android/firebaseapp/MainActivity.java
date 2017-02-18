@@ -3,6 +3,7 @@ package edu.udemy.android.firebaseapp;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -77,21 +78,37 @@ public class MainActivity extends AppCompatActivity {
         btn_show.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                usersReference.addListenerForSingleValueEvent( new ValueEventListener() {
-                    @Override
-                    public void onDataChange( DataSnapshot dataSnapshot ) {
-                        txv_show.setText( dataSnapshot.getValue().toString() );
-                    }
-
-                    @Override
-                    public void onCancelled( DatabaseError databaseError ) {
-                        txv_show.setText( "There are nothing in database..." );
-                    }
-                } );
+                showDatabase();
             }
         } );
     }
 
+
+    private void showDatabase() {
+        usersReference.addListenerForSingleValueEvent( new ValueEventListener() {
+            @Override
+            public void onDataChange( DataSnapshot dataSnapshot ) {
+                String idUser;
+                String result;
+                String listOfUsers = "";
+
+                for( int i = 1; i <= dataSnapshot.getChildrenCount(); i++ ) {
+                    idUser = String.valueOf( i );
+
+                    result = dataSnapshot.child( idUser ).getValue().toString();
+
+                    listOfUsers += result;
+                }
+
+                txv_show.setText( listOfUsers );
+            }
+
+            @Override
+            public void onCancelled( DatabaseError databaseError ) {
+                txv_show.setText( R.string.db_empty );
+            }
+        } );
+    }
 
     private User createUser() {
         User user = new User();

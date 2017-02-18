@@ -7,4 +7,5 @@
     <string name="txv_age">Age</string>
     <string name="btn_save">Save</string>
     <string name="btn_show">Show</string>
+    <string name="db_empty">There are nothing in database</string>
 </resources>
