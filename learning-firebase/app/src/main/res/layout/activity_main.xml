@@ -41,19 +41,20 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/edt_firstName"
-                android:text="@string/txv_firstName"
                 android:textSize="15sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:hint="@string/txv_firstName"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="@string/txv_lastName"
                 android:ems="10"
                 android:id="@+id/edt_lastName"
                 android:textSize="15sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/txv_lastName"/>
         </LinearLayout>
 
         <LinearLayout
@@ -66,11 +67,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:text="@string/txv_sex"
                 android:ems="10"
                 android:id="@+id/edt_sex"
                 android:textSize="15sp"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/txv_sex"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -79,8 +80,8 @@
                 android:ems="10"
                 android:id="@+id/edt_age"
                 android:textSize="15sp"
-                android:text="@string/txv_age"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:hint="@string/txv_age"/>
         </LinearLayout>
 
     </LinearLayout>

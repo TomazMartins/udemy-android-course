@@ -1,14 +1,15 @@
 package edu.udemy.android.firebaseapp;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     *   will be updated with this data.
     * */
     private DatabaseReference usersReference = firebaseReference.child( "users" );
+    private static final String FILE_PREFERENCES = "PreferencesFile";
+    private static final int ONLY_THIS_APP = 0;
 
 
     private EditText edt_firstName;
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
     private User currentUser;
 
+        private SharedPreferences sharedPreferences;
+    private int counterOfUsers;
+
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -54,10 +60,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView( R.layout.activity_main );
         create_components();
 
+        sharedPreferences = getSharedPreferences( FILE_PREFERENCES, ONLY_THIS_APP );
+
         btn_save.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
                 currentUser = createUser();
+
+                usersReference.child( String.valueOf( counterOfUsers ) ).setValue( currentUser );
             }
         } );
     }
@@ -71,7 +81,23 @@ public class MainActivity extends AppCompatActivity {
         user.setAge( Integer.parseInt( edt_age.getText().toString() ) );
         user.setSex( edt_sex.getText().toString() );
 
+        countUsers();
+
         return user;
+    }
+
+    private void countUsers() {
+
+        if( !sharedPreferences.contains( "QTD_USERS" ) ) {
+            counterOfUsers = 1;
+        } else {
+            counterOfUsers = sharedPreferences.getInt( "QTD_USERS", 0 );
+            counterOfUsers++;
+        }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt( "QTD_USERS", counterOfUsers );
+        editor.apply();
     }
 
     private void create_components() {
@@ -83,6 +109,6 @@ public class MainActivity extends AppCompatActivity {
         txv_show = (TextView) findViewById( R.id.txv_show );
 
         btn_save = (Button) findViewById( R.id.btn_save );
-        btn_show= (Button) findViewById( R.id.btn_show );
+        btn_show = (Button) findViewById( R.id.btn_show );
     }
 }
