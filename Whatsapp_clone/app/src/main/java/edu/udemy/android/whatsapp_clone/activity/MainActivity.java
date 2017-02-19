@@ -1,7 +1,9 @@
-package edu.udemy.android.whatsapp_clone;
+package edu.udemy.android.whatsapp_clone.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.udemy.android.whatsapp_clone.R;
 
 public class MainActivity extends AppCompatActivity {
 
