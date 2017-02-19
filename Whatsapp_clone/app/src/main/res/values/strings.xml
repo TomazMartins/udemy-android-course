@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Whatsapp_clone</string>
+    <string name="validator_advice">You has received a SMS to validate your number, please type the code od validation below:</string>
 </resources>
