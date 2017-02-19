@@ -25,6 +25,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.google.firebase:firebase-database:9.6.1'   // To use realtime database
+    compile 'com.google.firebase:firebase-auth:9.6.1'       // To use authetication
+    compile 'com.android.support:design:25.1.1'             // To use material design
+
     testCompile 'junit:junit:4.12'
 }
 
