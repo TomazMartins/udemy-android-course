@@ -28,6 +28,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:9.6.1'   // To use realtime database
     compile 'com.google.firebase:firebase-auth:9.6.1'       // To use authetication
     compile 'com.android.support:design:25.1.1'             // To use material design
+    compile 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0' // To use MaskFormatter
 
     testCompile 'junit:junit:4.12'
 }
