@@ -32,7 +32,7 @@ public class ValidatorActivity extends AppCompatActivity {
         *   For this, we use the lib 'MaskFormatter'. To add this dependency
         *   follow the instructions in here - https://github.com/rtoshiro/MaskFormatter.
         * */
-        SimpleMaskFormatter maskValidator = new SimpleMaskFormatter( "NNNNNN" );
+        SimpleMaskFormatter maskValidator = new SimpleMaskFormatter( "NNNN" );
         MaskTextWatcher maskWatcherValidator = new MaskTextWatcher( edt_validatorNumber, maskValidator );
         edt_validatorNumber.addTextChangedListener( maskWatcherValidator );
     }
