@@ -10,8 +10,11 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import edu.udemy.android.whatsapp_clone.R;
+import edu.udemy.android.whatsapp_clone.helper.Preferences;
+
 import android.widget.Button;
 
+import java.util.HashMap;
 import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
@@ -37,13 +40,18 @@ public class LoginActivity extends AppCompatActivity {
                 String fullCellphone = getFullCellphone();
 
                 String token = generateToken();
+
+                Preferences preferences = new Preferences( LoginActivity.this );
+                preferences.saveUserData( userName, fullCellphone, token );
+
+                HashMap<String, String> userData = preferences.getUserData();
             }
         } );
     }
 
 
     /**
-     * Generate a token, with fout digits, between 1000 and 9999.
+     * Generate a token, with four digits, between 1000 and 9999.
      *    This token never will be null.
      *
      * @return token with four digits
