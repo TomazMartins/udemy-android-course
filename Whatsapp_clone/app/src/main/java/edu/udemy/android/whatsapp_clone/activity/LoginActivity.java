@@ -2,6 +2,7 @@ package edu.udemy.android.whatsapp_clone.activity;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import edu.udemy.android.whatsapp_clone.helper.Permission;
 import edu.udemy.android.whatsapp_clone.helper.Preferences;
 
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -103,11 +105,38 @@ public class LoginActivity extends AppCompatActivity {
         Preferences preferences = new Preferences( LoginActivity.this );
         preferences.saveUserData( userName, fullCellphone, token );
 
-        HashMap<String, String> userData = preferences.getUserData();
+        // To recover data of user do this.
+        //   HashMap<String, String> userData = preferences.getUserData();
 
         String message = "Whatsapp confirmation code: " + token;
 
         boolean is_sent = sendSMS( "+" + fullCellphone, message );
+
+        startValidatorActivity( is_sent );
+    }
+
+    /**
+     * Start, from the LoginActivity, the Validator Activity.
+     *   For this, there is a verification if the SMS was sent.
+     *   In afirmative case, the ValidatorActivity is started.
+     *   In negative case, no.
+     *
+     * @param is_sent a boolean indicate if the SMS was sent or not.
+     */
+    private void startValidatorActivity( boolean is_sent ) {
+        if( is_sent ) {
+            Intent startValidatorActivity =
+                    new Intent( LoginActivity.this, ValidatorActivity.class );
+
+            // To start a new Activity from this
+            startActivity( startValidatorActivity );
+
+            // To finish the current Activity
+            finish();
+        } else {
+            Toast.makeText( LoginActivity.this, "Problem to send a SMS", Toast.LENGTH_SHORT )
+                    .show();
+        }
     }
 
     /**
@@ -118,7 +147,6 @@ public class LoginActivity extends AppCompatActivity {
     private boolean sendSMS( String cellphone, String message ) {
         final boolean SUCCESS = true;
         final boolean FAIL = false;
-
 
         boolean is_sent;
 
