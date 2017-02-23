@@ -7,12 +7,12 @@ import android.content.SharedPreferences;
 import java.util.HashMap;
 
 public class Preferences {
+    public static final String KEY_USERNAME = "USERNAME";
+    public  static final String KEY_CELLPHONE = "CELLPHONE";
+    public  static final String KEY_TOKEN = "TOKEN";
+
     private static final String FILE_PREFERENCES = "whatsapp-clone-preferences";
     private static final int MODE_PRIVATE = 0;
-
-    private static final String KEY_USERNAME = "USERNAME";
-    private static final String KEY_CELLPHONE = "CELLPHONE";
-    private static final String KEY_TOKEN = "TOKEN";
 
 
     private Context mContext;

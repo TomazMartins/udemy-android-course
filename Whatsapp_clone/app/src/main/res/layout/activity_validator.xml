@@ -33,7 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/layout_validatorContent"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:text="Validation"
@@ -61,16 +62,15 @@
             android:ems="10"
             android:id="@+id/edt_validatorNumber"
             android:textAlignment="center"
-            android:layout_marginLeft="125dp"
-            android:layout_marginTop="10dp"
             android:layout_width="100dp"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorText"
+            android:layout_marginTop="10dp"/>
 
         <Button
             android:text="Validate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_validate"
+            android:id="@+id/btn_validatorValidate"
             android:background="@color/colorPrimaryDark"
             android:textColor="@color/colorText"
             android:layout_marginTop="10dp"/>
