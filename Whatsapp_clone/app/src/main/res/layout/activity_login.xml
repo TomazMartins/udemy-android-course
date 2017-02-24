@@ -12,7 +12,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.udemy.android.whatsapp_clone.activity.LoginActivity"
     android:orientation="vertical"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:gravity="center_vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -29,77 +30,64 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_name"
+        android:id="@+id/layout_login"
         android:layout_marginTop="50dp">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/edt_loginName"
+            android:id="@+id/edt_loginEmail"
             android:layout_weight="1"
-            android:hint="Your Name"
-            android:textColor="@color/colorText"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_cellphone">
+            android:hint="Your E-mail"
+            android:textColor="@color/colorText"
+            android:textAlignment="center"
+            android:layout_marginBottom="10dp"/>
 
         <EditText
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:ems="10"
-            android:id="@+id/edt_loginCod"
+            android:id="@+id/edt_loginPassword"
             android:layout_weight="1"
-            android:hint="+55"
+            android:hint="Your Password"
             android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:layout_width="wrap_content"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/edt_loginDDD"
-            android:layout_weight="1"
-            android:hint="61"
-            android:textAlignment="center"
-            android:textColor="@color/colorText"/>
-
-        <EditText
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
-            android:id="@+id/edt_loginPhone"
-            android:layout_weight="1"
-            android:hint="9999-9999"
-            android:textColor="@color/colorText"
-            android:layout_width="350dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_buttom">
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"/>
 
         <Button
-            android:text="Register"
-            android:layout_width="wrap_content"
+            android:text="Login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_loginRegister"
+            android:id="@+id/btn_loginLogin"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorText"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_register">
+
+        <TextView
+            android:text="Do You don't have an account? Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txv_register"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="@color/colorText"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 </LinearLayout>
