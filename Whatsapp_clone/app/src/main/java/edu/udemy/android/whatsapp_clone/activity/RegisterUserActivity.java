@@ -12,6 +12,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import edu.udemy.android.whatsapp_clone.R;
@@ -58,16 +61,34 @@ public class RegisterUserActivity extends AppCompatActivity {
             @Override
             public void onComplete( @NonNull Task<AuthResult> task ) {
                 if( task.isSuccessful() ) {
+                    FirebaseUser firebaseUser = task.getResult().getUser();
+                    user.setId( firebaseUser.getUid() );
+                    user.save();
+
+                    firebaseAuth.signOut();
+
                     Toast.makeText(
                             RegisterUserActivity.this, "User registered", Toast.LENGTH_SHORT )
                             .show();
 
-                    FirebaseUser firebaseUser = task.getResult().getUser();
-                    user.setId( firebaseUser.getUid() );
-                    user.save();
+                    finish();
                 } else {
+                    String exceptionMessage = "";
+                    try {
+                        throw task.getException();
+                    } catch( FirebaseAuthWeakPasswordException fawpe ) {
+                        exceptionMessage = "Passowrd too weak";
+                    } catch( FirebaseAuthInvalidCredentialsException faice ) {
+                        exceptionMessage = "Invalid E-mail";
+                    } catch( FirebaseAuthUserCollisionException fauce ) {
+                        exceptionMessage = "User already exists";
+
+                    } catch( Exception e ) {
+                        exceptionMessage = "Error while register";
+                    }
+
                     Toast.makeText(
-                            RegisterUserActivity.this, "User not registered", Toast.LENGTH_SHORT )
+                            RegisterUserActivity.this, exceptionMessage, Toast.LENGTH_SHORT )
                             .show();
                 }
             }
