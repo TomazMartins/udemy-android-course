@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import edu.udemy.android.whatsapp_clone.R;
 import edu.udemy.android.whatsapp_clone.config.FirebaseConfig;
@@ -60,6 +61,10 @@ public class RegisterUserActivity extends AppCompatActivity {
                     Toast.makeText(
                             RegisterUserActivity.this, "User registered", Toast.LENGTH_SHORT )
                             .show();
+
+                    FirebaseUser firebaseUser = task.getResult().getUser();
+                    user.setId( firebaseUser.getUid() );
+                    user.save();
                 } else {
                     Toast.makeText(
                             RegisterUserActivity.this, "User not registered", Toast.LENGTH_SHORT )
