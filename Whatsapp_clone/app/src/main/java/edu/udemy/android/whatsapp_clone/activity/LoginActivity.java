@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         createComponents();
 
+        verifyLoggedUser();
+
         btn_loginLogin.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
@@ -43,6 +45,14 @@ public class LoginActivity extends AppCompatActivity {
         } );
     }
 
+
+    private void verifyLoggedUser() {
+        firebaseAuthentication = FirebaseConfig.getFirebaseAuthentication();
+
+        if( firebaseAuthentication.getCurrentUser() != null ) {
+            startMainActivity();
+        }
+    }
 
     /**
      * Validate the login of the user. If the user exits, there is successful
@@ -59,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete( @NonNull Task<AuthResult> task ) {
                 if( task.isSuccessful() ) {
+                    startMainActivity();
+
                     Toast.makeText( LoginActivity.this, "Success in Login", Toast.LENGTH_SHORT )
                             .show();
                 } else {
@@ -77,6 +89,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         } );
+    }
+
+    private void startMainActivity() {
+        Intent startMainActivity = new Intent( LoginActivity.this, MainActivity.class );
+        startActivity( startMainActivity );
+
+        finish();
     }
 
     /**
@@ -119,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent startRegisterActivity = new Intent( LoginActivity.this, RegisterUserActivity.class );
         startActivity( startRegisterActivity );
     }
-    
+
     /**
      * Create references to components of user interface.
      */
