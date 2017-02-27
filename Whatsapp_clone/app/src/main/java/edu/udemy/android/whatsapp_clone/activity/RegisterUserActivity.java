@@ -74,10 +74,11 @@ public class RegisterUserActivity extends AppCompatActivity {
                     finish();
                 } else {
                     String exceptionMessage = "";
+
                     try {
                         throw task.getException();
                     } catch( FirebaseAuthWeakPasswordException fawpe ) {
-                        exceptionMessage = "Passowrd too weak";
+                        exceptionMessage = "Password too weak";
                     } catch( FirebaseAuthInvalidCredentialsException faice ) {
                         exceptionMessage = "Invalid E-mail";
                     } catch( FirebaseAuthUserCollisionException fauce ) {

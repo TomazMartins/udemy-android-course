@@ -1,35 +1,23 @@
 package edu.udemy.android.whatsapp_clone.activity;
 
-import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.github.rtoshiro.util.format.SimpleMaskFormatter;
-import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 
 import edu.udemy.android.whatsapp_clone.R;
 import edu.udemy.android.whatsapp_clone.config.FirebaseConfig;
-import edu.udemy.android.whatsapp_clone.helper.Permission;
-import edu.udemy.android.whatsapp_clone.helper.Preferences;
 import edu.udemy.android.whatsapp_clone.model.User;
-
-import android.widget.Button;
-import android.widget.Toast;
-
-import java.util.HashMap;
-import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edt_loginEmail;
@@ -64,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         setUser();
 
         firebaseAuthentication = FirebaseConfig.getFirebaseAuthentication();
+
         firebaseAuthentication.signInWithEmailAndPassword(
                 user.getEmail(), user.getPassword()
         ).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
@@ -73,7 +62,17 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText( LoginActivity.this, "Success in Login", Toast.LENGTH_SHORT )
                             .show();
                 } else {
-                    Toast.makeText( LoginActivity.this, "User didn't exist", Toast.LENGTH_SHORT )
+                    String exceptionMessage = "";
+
+                    try {
+                        throw task.getException();
+                    } catch( FirebaseAuthInvalidCredentialsException faice ) {
+                        exceptionMessage = "E-mail or password invalid";
+                    } catch( Exception e ) {
+                        exceptionMessage = "Error while login";
+                    }
+
+                    Toast.makeText( LoginActivity.this, exceptionMessage, Toast.LENGTH_SHORT )
                             .show();
                 }
             }
@@ -85,8 +84,30 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void setUser() {
         user = new User();
-        user.setEmail( edt_loginEmail.getText().toString() );
-        user.setPassword( edt_loginPassword.getText().toString() );
+
+        String email = edt_loginEmail.getText().toString();
+        String password = edt_loginPassword.getText().toString();
+
+        /*
+        * TODO: Find a solution for the problem of IllegalArgumentException.
+        *   If the Strings 'email' and 'password' are equals an empty
+        *   or  null, the method signInWithEmailAndPassword(), used in
+        *   method 'validateUser()', throw a exception:
+        *
+        *   IllegalArgumentException.
+        *
+        *   For a temporary solution, I fill this variables with a default
+        *   value, indicate that there is a fail.
+        *
+        *   We must find a solution more elegant.
+        * */
+        if( email.isEmpty() || password.isEmpty() ) {
+            email = "FAIL";
+            password = "FAIL";
+        }
+
+        user.setEmail( email );
+        user.setPassword( password );
     }
 
     /**
@@ -98,8 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent startRegisterActivity = new Intent( LoginActivity.this, RegisterUserActivity.class );
         startActivity( startRegisterActivity );
     }
-
-
+    
     /**
      * Create references to components of user interface.
      */
