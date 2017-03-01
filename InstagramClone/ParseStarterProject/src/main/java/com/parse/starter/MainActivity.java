@@ -10,41 +10,36 @@ package com.parse.starter;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    @Override
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main );
 
-    ParseAnalytics.trackAppOpenedInBackground(getIntent());
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
+        ParseObject punctuation = new ParseObject( "Punctuation" );
+        punctuation.put( "name", "Mário" );
+        punctuation.put( "punctuation", 800 );
+        punctuation.saveInBackground( new SaveCallback() {
+            @Override
+            public void done( ParseException pe ) {
+                if( pe == null ) {
+                    Log.i( "SAVE POINTS", "Save data with success" );
+                } else {
+                    Log.i( "SAVE POINTS", "Fail while save data" );
+                }
+            }
+        } );
     }
-
-    return super.onOptionsItemSelected(item);
-  }
 }

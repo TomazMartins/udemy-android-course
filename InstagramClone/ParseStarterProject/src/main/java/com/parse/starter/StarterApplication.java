@@ -36,21 +36,7 @@ public class StarterApplication extends Application {
                 .build()
         );
 
-        ParseObject punctuation = new ParseObject( "Punctuation" );
-        punctuation.put( "points", 100 );
-
-        punctuation.saveInBackground( new SaveCallback() {
-            @Override
-            public void done( ParseException e ) {
-                if( e == null ) {
-                    Log.i( "TESTE EXECUTION", "Save with success" );
-                } else {
-                    Log.i( "TESTE EXECUTION", "Save failed" );
-                }
-            }
-        } );
-
-        ParseUser.enableAutomaticUser();
+//        ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
         // Optionally enable public read access.
         // defaultACL.setPublicReadAccess(true);
